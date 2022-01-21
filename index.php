@@ -9,16 +9,41 @@
 <body>
     
     <!-- Sezione PHP -->
+
     <?php
+        // Paragrafo intero
         $mio_lorem = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo ut nam quae quaerat dicta error, quidem numquam aut dolore veniam enim temporibus fugit eveniet earum explicabo ex excepturi perspiciatis. Ut.';
+        // Parola da censurare
+        $censored_word = $_GET['censored'];
+        // Stringa da sostituire per la censura
+        $replacing_string = '***';
+        // Paragrafo censurato
+        $censored_lorem = str_replace($censored_word, $replacing_string, $mio_lorem);
     ?>
 
+
     <!-- Sezione HTML -->
-    <h2>Paragrafo Lorem:</h2>
+
+    <!-- Lorem originale -->
+    <h2>Paragrafo lorem:</h2>
     <p>
-        <?php echo $mio_lorem ?>
+        <!-- Output variabile lorem -->
+        <?php echo $mio_lorem; ?>
     </p>
     <h3>Lunghezza paragrafo:</h3>
-    <span><?php echo strlen($mio_lorem) ?></span>
+    <!-- Output lunghezza lorem -->
+    <span>
+        <?php echo strlen($mio_lorem); ?>
+    </span>
+    <!-- Lorem censurato -->
+    <h2>Paragrafo lorem con censura:</h2>
+    <p>
+        <?php echo $censored_lorem; ?>
+    </p>
+    <!-- Output lunghezza lorem censurato -->
+    <span>
+        <?php echo strlen($censored_lorem); ?>
+    </span>
+    <!-- Se uso ad esempio l'url localhost:8888/php-badwords/?censored=ipsum mi andrà a censurare la parola ipsum -->
 </body>
 </html>
